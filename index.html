@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="assets/css/main.css">
   
   <title>Frontend Mentor | Tip calculator app</title>
 
@@ -16,29 +20,49 @@
 </head>
 <body>
 
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
+  <div class="calculator">
+    <div class="data">
+      <div class="bill">
+        <h5>Bill</h5>
+        <label for="bill">$</label>
+        <input type="text" id="bill" placeholder="0">
+      </div>
+      <div class="selectTip">
+        <h5>Select Tip %</h5>
+        <div class="buttons">
+          <button class="tip tipFive">5%</button>
+          <button class="tip tipTen">10%</button>
+          <button class="tip tipFifteen">15%</button>
+          <button class="tip tipTwentyFive">25%</button>
+          <button class="tip tipFifty">50%</button>
+          <input type="text" id="custom" placeholder="Custom">
+        </div>
+      </div>
+      <div class="people">
+        <h5>Number of People</h5>
+        <input type="text" id="numberOfPeople">
+      </div>
+    </div>
+    <div class="result">
+      <div class="tipAmount">
+        <h5>Tip Amount</h5>
+        <span>/ person</span>
+        <span class="tipResult"></span>
+      </div>
+      <div class="total">
+        <h5>Total</h5>
+        <span>/ person</span>
+        <span class="totalResult"></span>
+      </div>
+      <button class="reset">Reset</button>
+    </div>
+  </div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
