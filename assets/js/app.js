@@ -1,19 +1,26 @@
-let bill = document.querySelector('#bill')
-let tip = document.querySelector('.tip')
-let custom = document.querySelector('#custom')
-let numberOfPeople = document.querySelector('#numberOfPeople')
-let tipResult = document.querySelector('.tipResult')
-let tip5 = document.querySelector('.tip5')
-let tip10 = document.querySelector('.tip15')
-let tip15 = document.querySelector('.tip15')
-let tip25 = document.querySelector('.tip25')
-let tip50 = document.querySelector('.tip50')
+const bill = document.querySelector('#bill')
+const tip = document.querySelector('.tip')
+const custom = document.querySelector('#custom')
+const numberOfPeople = document.querySelector('#numberOfPeople')
+const tipResult = document.querySelector('.tipResult')
+const totalResult = document.querySelector('.totalResult')
+const tip5 = document.querySelector('.tip5')
+const tip10 = document.querySelector('.tip15')
+const tip15 = document.querySelector('.tip15')
+const tip25 = document.querySelector('.tip25')
+const tip50 = document.querySelector('.tip50')
 
-let getBill = () => {
-    bill.value
+let isCustom = false
+let totalDefault = '0.00'
+let tipDefault = '0.00'
+
+totalDefault.innerText = `0.00`
+let getBill = (event) => {
+    console.log(bill.value)
 }
 
 tip5.addEventListener('click', () => {
     
 })
+getBill()
 
