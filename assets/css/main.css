@@ -349,8 +349,13 @@ body {
   background-color: #00494d;
   color: #f4fafa;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 24px;
+}
+.calculator .buttons .tip.active {
+  background-color: #26c0ab;
+  color: #00494d;
 }
 .calculator .buttons #custom {
   width: 100px;
