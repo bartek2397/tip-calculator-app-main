@@ -26,6 +26,7 @@
         <h5>Bill</h5>
         <label for="bill">$</label>
         <input type="text" id="bill" placeholder="0">
+        <p class="errorText"></p>
       </div>
       <div class="selectTip">
         <h5>Select Tip %</h5>
@@ -45,14 +46,22 @@
     </div>
     <div class="result">
       <div class="tipAmount">
-        <h5>Tip Amount</h5>
-        <span>/ person</span>
-        <span class="tipResult"></span>
+        <div class="amountText">
+          <h5>Tip Amount</h5>
+          <span>/ person</span>
+        </div>
+        <div class="tipResult">
+          <span class="amountNum"></span>
+        </div>
       </div>
       <div class="total">
-        <h5>Total</h5>
-        <span>/ person</span>
-        <span class="totalResult"></span>
+        <div class="totalText">
+          <h5>Total</h5>
+          <span>/ person</span>
+        </div>
+        <div class="totalResult">
+          <span class="totalNum"></span>
+        </div>
       </div>
       <button class="reset">Reset</button>
     </div>

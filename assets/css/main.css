@@ -300,6 +300,17 @@ body {
   padding: 20px;
   color: #f4fafa;
 }
+.calculator .result .tipAmount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
 .calculator .result .tipAmount h5 {
   margin: 10px 0 0 0;
   padding: 0;
@@ -308,13 +319,32 @@ body {
   font-size: 12px;
   margin: 0;
 }
+.calculator .result .tipAmount .tipResult span {
+  font-size: 40px;
+  color: #26c0ab;
+}
+.calculator .result .total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 30px;
+}
 .calculator .result .total h5 {
-  margin: 30px 0 0 0;
+  margin: 0;
   padding: 0;
 }
 .calculator .result .total span {
   font-size: 12px;
-  line-height: 0;
+}
+.calculator .result .total .totalResult span {
+  font-size: 40px;
+  color: #26c0ab;
 }
 .calculator .result .reset {
   width: 100%;
