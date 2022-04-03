@@ -15,14 +15,16 @@ const btnList = [tip5, tip10, tip15, tip25, tip50]
 let isCustom = false
 let tipDefault = `0.00`
 let totalDefault = `0.00`
-let customTip = '';
+let customTip = custom.value;
 let billAmount = bill.value;
-let guests = numberOfPeople.value;
+let guests = 1;
+let tipAmount;
+let totalAmount;
 
 tipResult.innerText = tipDefault
 totalResult.innerText = totalDefault
 tip5.classList.add("active");
-setTip(5);
+setTip();
 
 tip5.addEventListener('click', () => {
     if (tip5.classList.contains('active')) {
@@ -89,41 +91,42 @@ document.addEventListener('change', () => {
     }
 })
 
-bill.addEventListener('change', () => {
+document.addEventListener('change', () => {
     showSum()
 })
 
-function getBill() {
-    //get the value
-    billAmount = bill.value;
-  
-    // when user inputs decimal, only allow 2 characters after it.
-    if (billAmount.includes(".")) {
-      i = billAmount.indexOf(".");
-      x = i + 3;
-      billAmount = billAmount.slice(0, x);
-  
-      //set display and amount
-      bill.value = billAmount;
-  
-      showSum();
-      return;
-    }
-  }
+
 
 function showSum() {
-    x = (billAmount * tipAmount) / 100
-    i = guests
-    splitTip = x / i
-    billTotal = billAmount / i + splitTip
+    if (tip5.classList.contains('active')) {
+        let tipAmount = Number(((billAmount * 5) / 100) / guests);
+        let totalAmount = (billAmount / guests) + tipAmount
+        
+    } else if (tip10.classList.contains('active')) {
+        tipAmount = ((billAmount * 10) / 100) / guests
+        totalAmount = (billAmount / guests) + tipAmount
+    } else if (tip15.classList.contains('active')) {
+        tipAmount = ((billAmount * 15) / 100) / guests
+        totalAmount = (billAmount / guests) + tipAmount
+    } else if (tip25.classList.contains('active')) {
+        tipAmount = ((billAmount * 25) / 100) / guests
+        totalAmount = (billAmount / guests) + tipAmount
+    } else if (tip50.classList.contains('active')) {
+        tipAmount = ((billAmount * 50) / 100) / guests
+        totalAmount = (billAmount / guests) + tipAmount
+    } else {
+        setTip()
+    }
 
-    tipDefault.innerText = splitTip.toFixed(2)
-    totalDefault.innerText = billTotal.toFixed(2)
+    tipResult.innerText = Number(tipAmount)
+    totalResult.innerText = totalAmount
+
     
 }
+console.log(showSum())
 
 function setTip (number) {
-    if (isCustom === true) {
+    if (isCustom === true && customTip === 'number') {
         tipAmount = customTip;
     } else {
         tipAmount = number
