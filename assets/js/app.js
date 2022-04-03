@@ -17,17 +17,41 @@ let isCustom = false
 let tipDefault = `0.00`
 let totalDefault = `0.00`
 let customTip = custom.value;
-let billAmount = bill.value;
 let guests = 1;
-let tipAmount;
-let totalAmount;
 
-tipResult.innerText = tipDefault
-totalResult.innerText = totalDefault
+tipResult.innerText = tipDefault;
+totalResult.innerText = totalDefault;
 tip5.classList.add("active");
 
-btnList.forEach(tip) => {
-    tip.addEventListener('click', () => {
-        btnList.forEach
+
+btnList.forEach((tip) => {
+    tip.addEventListener('click', (e) => {
+        btnList.forEach((tile) => {
+            if (tile.classList.contains('active')) {
+                tile.classList.remove('active')
+            }
+
+            e.currentTarget.classList.add('active')
+        })
+
+        renderTip()
     })
+})
+
+const renderTip = function () {
+    let tip;
+    const billAmount = Number(bill.value)
+    const people = Number(numberOfPeople.value);
+
+    btnList.forEach((tile) => {
+        if (tile.classList.contains('active')) {
+            tip = parseInt(tile.textContent, 10) / 100;
+        }
+    })
+
+    const tipAmount = Number(((billAmount / people) * tip).toFixed(2));
+    const totalAmount = Number(((billAmount / people).toFixed(2)));
+
+    tipResult.textContent = tipResult.textContent == '$Infinity' || billAmount == 0 || billAmount == 'NaN' ? '0.00' : `$${tipAmount}`
+    totalResult.textContent = totalResult.textContent == '$Infinity' || billAmount == 0 ? '$0.00' : `$${totalAmount + tipAmount}`
 }
