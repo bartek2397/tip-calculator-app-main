@@ -293,6 +293,9 @@ body {
   width: 50%;
   color: #5e7a7d;
 }
+.calculator .data .hidden {
+  display: none;
+}
 .calculator .result {
   width: 50%;
   background-color: #00494d;
