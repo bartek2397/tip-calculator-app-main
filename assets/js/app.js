@@ -12,11 +12,12 @@ const tip25 = document.querySelector('.tip25')
 const tip50 = document.querySelector('.tip50')
 const btnList = [tip5, tip10, tip15, tip25, tip50]
 const reset = document.querySelector('.reset')
+const buttons = document.querySelector('.buttons')
 
 
 let isCustom = false
-let tipDefault = `0.00`
-let totalDefault = `0.00`
+let tipDefault = `$0.00`
+let totalDefault = `$0.00`
 let customTip = custom.value;
 let guests = 1;
 
@@ -50,11 +51,25 @@ const renderTip = function () {
         }
     })
 
-    const tipAmount = Number(((billAmount / people) * tip).toFixed(2));
-    const totalAmount = Number(((billAmount / people).toFixed(2)));
+    const tipAmount = Number(((billAmount / people) * tip));
+    const totalAmount = Number(((billAmount / people)));
 
     tipResult.textContent = tipResult.textContent == '$Infinity' || billAmount == 0 || billAmount == 'NaN' ? '$0.00' : `$${tipAmount}`
     totalResult.textContent = totalResult.textContent == '$Infinity' || billAmount == 0 ? '$0.00' : `$${totalAmount + tipAmount}`
+
+
+    custom.addEventListener('input', () => {
+        btnList.forEach((tile) => {
+            tile.classList.remove('active')
+        })
+        if (custom.value > 0) {
+            tipResult.textContent = ((billAmount / people) * custom.value)
+            
+        } else if (custom.value == '') {
+            tip5.classList.add('active')
+        }
+    })
+
 }
 
 bill.addEventListener('input', () => {
@@ -74,9 +89,31 @@ numberOfPeople.addEventListener('input', () => {
 
 })
 
+// custom.addEventListener('input', () => {
+//     btnList.forEach((tile) => {
+//         tile.classList.remove('active')
+//     })
+//     if (custom.value > 0) {
+//         customTip = Number.parseInt(custom.value / 100);
+//         tipResult.textContent = Number(((billAmount / people) * customTip))
+//         renderTip()
+//     } else if (custom.value == '') {
+//         tip5.classList.add('active')
+//     }
+// })
+
 
 reset.addEventListener('click', () => {
     bill.value = 0;
-    customTip = 0;
+    custom.value = null;
     numberOfPeople.value = 0;
+    tipResult.innerText = '$0.00'
+    totalResult.innerText = '$0.00'
+    reset.classList.remove('active')
 })
+
+let error = () => {
+    if (customTip == 0) {
+        buttons.innerHTML = `<p class='customError'>Must be above zero!</p>`
+    }
+}

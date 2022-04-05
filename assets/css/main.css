@@ -275,6 +275,14 @@ body {
   max-height: 100vh;
 }
 
+input[type=number] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+  border: 1px solid #808080;
+  text-align: right;
+}
+
 .calculator {
   background-color: #ffffff;
   width: 40%;
@@ -351,16 +359,15 @@ body {
 }
 .calculator .result .reset {
   width: 100%;
-  background-color: #26c0ab;
+  background-color: #5e7a7d;
   border: none;
   border-radius: 5px;
   height: 30px;
   margin: 100px 0 0 0;
 }
-.calculator #bill {
-  border: none;
-  text-align: right;
-  margin: 0 auto;
+.calculator .result .reset.active {
+  background-color: #26c0ab;
+  color: #00494d;
 }
 .calculator .buttons {
   display: -webkit-box;
@@ -374,6 +381,9 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+.calculator .buttons .customError {
+  display: block;
 }
 .calculator .buttons .tip {
   width: 100px;

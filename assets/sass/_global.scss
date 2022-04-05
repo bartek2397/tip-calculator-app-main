@@ -5,6 +5,12 @@ body {
     max-height: 100vh;
 }
 
+input[type='number'] {
+    appearance: textfield;
+    border: 1px solid #808080;
+    text-align: right;
+}
+
 .calculator {
     background-color: $calcBgColor;
     width: 40%;
@@ -77,26 +83,30 @@ body {
 
         .reset {
             width: 100%;
-            background-color: $resetBgColor;
+            background-color: $dataFontColor;
             border: none;
             border-radius: 5px;
             height: 30px;
             margin: 100px 0 0 0;
+
+            &.active {
+                background-color: $resetBgColor;
+                color: $buttonBgColor;
+            }
         }
 
         
     }
 
-    #bill {
-        border: none;
-        text-align: right;
-        margin: 0 auto;
-    }
     .buttons {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+
+        .customError {
+            display: block;
+        }
 
         .tip {
             width: 100px;
