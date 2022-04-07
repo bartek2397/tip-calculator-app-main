@@ -18,11 +18,9 @@ const buttons = document.querySelector('.buttons')
 let isCustom = false
 let tipDefault = `$0.00`
 let totalDefault = `$0.00`
-let customTip = custom.value;
-let guests = 1;
 
-tipResult.innerText = tipDefault;
-totalResult.innerText = totalDefault;
+tipResult.textContent = tipDefault;
+totalResult.textContent = totalDefault;
 tip5.classList.add("active");
 
 
@@ -40,7 +38,7 @@ btnList.forEach((tip) => {
     })
 })
 
-const renderTip = function () {
+const renderTip = () => {
     let tip;
     const billAmount = Number(bill.value)
     const people = Number(numberOfPeople.value);
@@ -63,14 +61,17 @@ const renderTip = function () {
             tile.classList.remove('active')
         })
         if (custom.value > 0) {
-            tipResult.textContent = ((billAmount / people) * custom.value)
+            tipResult.textContent = `$${Number(((billAmount / people) * (custom.value / 100))).toFixed(2)}`
+            totalResult.textContent = `$${tipResult.textContent + billAmount}`
             
         } else if (custom.value == '') {
             tip5.classList.add('active')
         }
+        
     })
 
 }
+console.log(renderTip())
 
 bill.addEventListener('input', () => {
     renderTip();
@@ -86,21 +87,10 @@ numberOfPeople.addEventListener('input', () => {
         numberOfPeople.style.border = '2px solid hsl(0, 100%, 74%)';
         error.classList.remove('hidden');
     }
+    reset.classList.add('active');
 
 })
 
-// custom.addEventListener('input', () => {
-//     btnList.forEach((tile) => {
-//         tile.classList.remove('active')
-//     })
-//     if (custom.value > 0) {
-//         customTip = Number.parseInt(custom.value / 100);
-//         tipResult.textContent = Number(((billAmount / people) * customTip))
-//         renderTip()
-//     } else if (custom.value == '') {
-//         tip5.classList.add('active')
-//     }
-// })
 
 
 reset.addEventListener('click', () => {
